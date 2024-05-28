@@ -1,10 +1,7 @@
 package de.lubowiecki.fxproducts;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,6 +27,9 @@ public class ProductController {
     private TextField preis;
 
     @FXML
+    private ListView<String> ausgabe;
+
+    @FXML
     public void save() {
         Product p = new Product();
         p.setName(name.getText());
@@ -39,15 +39,43 @@ public class ProductController {
         p.setPrice(Double.parseDouble(preis.getText()));
         produkte.add(p);
         clearFields(); // Formular wird geleert
-
-        System.out.println();
-        System.out.println(produkte);
+        printProduct();
     }
+
+    @FXML
+    public void delete() {
+        int index = ausgabe.getSelectionModel().getSelectedIndex();
+        produkte.remove(index);
+        printProduct();
+    }
+
+    private void printProduct() {
+
+        ausgabe.getItems().clear(); // Alle Elemente Entfernen
+
+        for(Product p : produkte) {
+
+            StringBuilder row = new StringBuilder();
+            row.append(p.getName())
+                    .append("\n")
+                    .append(p.getDescription())
+                    .append("\n")
+                    .append(p.getCount())
+                    .append("\n")
+                    .append(p.getPrice())
+                    .append("\n")
+                    .append(p.getAvailableSince())
+                    .append("\n");
+
+            ausgabe.getItems().add(row.toString());
+        }
+    }
+
 
     private void clearFields() {
         name.clear();
         beschreibung.clear();
-        anzahl.getEditor().clear();
+        anzahl.getValueFactory().setValue(0);
         imBestandSeit.setValue(LocalDate.now());
         preis.clear();
     }
