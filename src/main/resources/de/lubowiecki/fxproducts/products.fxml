@@ -11,26 +11,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.lubowiecki.fxproducts.ProductController">
    <children>
-      <Label layoutX="40.0" layoutY="51.0" text="Name" />
+      <Label layoutX="40.0" layoutY="50.0" text="Name" />
       <TextField fx:id="name" layoutX="40.0" layoutY="68.0" prefHeight="25.0" prefWidth="191.0" />
+
       <Label layoutX="40.0" layoutY="104.0" text="Beschreibung" />
       <TextArea fx:id="beschreibung" layoutX="40.0" layoutY="122.0" prefHeight="69.0" prefWidth="191.0" />
+
       <Label layoutX="40.0" layoutY="198.0" text="Anzahl" />
-
-      <!--
-      <fx:define>
-         <Integer fx:id="min" fx:value="0" />
-         <Integer fx:id="max" fx:value="1000" />
-      </fx:define>
-      -->
-
       <Spinner fx:id="anzahl" layoutX="40.0" layoutY="216.0" max="1000" min="0" prefHeight="25.0" prefWidth="191.0" />
+
       <Label layoutX="40.0" layoutY="256.0" text="Im Bestand seit" />
       <DatePicker fx:id="imBestandSeit" layoutX="40.0" layoutY="274.0" prefHeight="25.0" prefWidth="191.0" />
+
       <Label layoutX="40.0" layoutY="309.0" text="Preis" />
       <TextField fx:id="preis" layoutX="40.0" layoutY="326.0" prefHeight="25.0" prefWidth="191.0" />
+
       <Button layoutX="157.0" layoutY="358.0" mnemonicParsing="false" onAction="#save" text="Speichern" />
+
       <ListView fx:id="ausgabe" layoutX="300.0" layoutY="68.0" prefHeight="318.0" prefWidth="272.0" />
+
       <Button layoutX="507.0" layoutY="37.0" mnemonicParsing="false" onAction="#delete" text="Löschen" />
+
+      <Button fx:id="editBtn" layoutX="300.0" layoutY="37.0" mnemonicParsing="false" onAction="#edit" text="Bearbeiten" />
    </children>
 </AnchorPane>
